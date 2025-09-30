@@ -27,19 +27,19 @@ alias gco="git checkout"
 # =========================
 # System Monitoring
 # =========================
-alias h="htop"                     # htop shortcut
-alias b="btop"                     # btop shortcut
-alias g="glances"                  # glances overview
-alias psu="ps aux"                 # process tree
+alias h="htop"     # htop shortcut
+alias b="btop"     # btop shortcut
+alias g="glances"  # glances overview
+alias psu="ps aux" # process tree
 alias memtop="ps aux --sort=-%mem | head -n 15"
 alias cputop="ps aux --sort=-%cpu | head -n 15"
 
 # =========================
 # Disk / Filesystem
 # =========================
-alias dux="ncdu"                   # ncdu explorer
-alias dus="du -sh * | sort -h"     # size summary
-alias dfh="df -h"                  # disk usage
+alias dux="ncdu"               # ncdu explorer
+alias dus="du -sh * | sort -h" # size summary
+alias dfh="df -h"              # disk usage
 
 # =========================
 # Networking
@@ -50,7 +50,7 @@ alias conns="sudo lsof -i -P -n"
 alias snif="sudo tcpdump -i any"
 alias nmon="nload"
 alias bmonn="bmon"
-alias iftopn="sudo iftop -i en0"   # replace en0 with your interface
+alias iftopn="sudo iftop -i en0" # replace en0 with your interface
 
 # =========================
 # Multiplexing

@@ -8,36 +8,40 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     kickstart = {
-	url = "github:jdtaylor311/kickstart.nvim";
-			flake = false;
-	};
+      url = "github:jdtaylor311/kickstart.nvim";
+      flake = false;
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, kickstart, ... }:
-let supportedSystems = [ "aarch64-darwin" "x84_64-linux" ];
-forAllSystems = f: nixpkgs.lib.genAttrs supportedSystems (system: f system);
- in {
-	homeConfigurations = {
-      "jdtaylor311-darwin" =
-        home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs { system = "aarch64-darwin"; }; # or x86_64-linux
-          modules = [ 
-	    {
-		home.file.".config/nvim".source = kickstart;
-            }
-	    ./home.nix 
-	  ];
-        };
-      "jdtaylor311-linux" =
-        home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs { system = "aarch64-darwin"; }; # or x86_64-linux
-          modules = [ 
-	    {
-		home.file.".config/nvim".source = kickstart;
-            }
-	    ./home.nix 
-	  ];
-        };
-	};
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    kickstart,
+    ...
+  }: let
+    supportedSystems = ["aarch64-darwin" "x84_64-linux"];
+    forAllSystems = f: nixpkgs.lib.genAttrs supportedSystems (system: f system);
+  in {
+    homeConfigurations = {
+      "jdtaylor311-darwin" = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {system = "aarch64-darwin";}; # or x86_64-linux
+        modules = [
+          {
+            home.file.".config/nvim".source = kickstart;
+          }
+          ./home.nix
+        ];
+      };
+      "jdtaylor311-linux" = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {system = "aarch64-darwin";}; # or x86_64-linux
+        modules = [
+          {
+            home.file.".config/nvim".source = kickstart;
+          }
+          ./home.nix
+        ];
+      };
     };
+  };
 }
