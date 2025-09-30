@@ -36,9 +36,6 @@ in {
   };
 
   programs.fzf.enable = true;
-  # programs.neovim.enable = true;
-
-  home.file.".config/nvim".source = ./home/nvim;
 
   # Map bash files and directories
   home.file.".bashrc.d".source = ./home/bash/.bashrc.d;
