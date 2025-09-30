@@ -11,11 +11,20 @@
   };
 
   outputs = { self, nixpkgs, home-manager }:
-    {
-      homeConfigurations."jdtaylor311" =
+let supportedSystems = [ "aarch64-darwin" "x84_64-linux" ];
+forAllSystems = f: nixpkgs.lib.genAttrs supportedSystems (system: f system);
+ in {
+	homeConfigurations = {
+      "jdtaylor311-darwin" =
         home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs { system = "aarch64-darwin"; }; # or x86_64-linux
           modules = [ ./home.nix ];
         };
+	      "jdtaylor311-linux" =
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs { system = "aarch64-darwin"; }; # or x86_64-linux
+          modules = [ ./home.nix ];
+        };
+	};
     };
 }
