@@ -1,0 +1,24 @@
+# Catppuccin Mocha (custom minimal palette)
+# Reference: https://github.com/catppuccin/catppuccin
+background = 1e1e2e
+foreground = cdd6f4
+cursor-color = f5e0dc
+selection-background = 313244
+
+# Basic 16 colors
+palette = 000000
+palette = f38ba8
+palette = a6e3a1
+palette = f9e2af
+palette = 89b4fa
+palette = f5c2e7
+palette = 94e2d5
+palette = bac2de
+palette = 585b70
+palette = f38ba8
+palette = a6e3a1
+palette = f9e2af
+palette = 89b4fa
+palette = f5c2e7
+palette = 94e2d5
+palette = a6adc8

@@ -1,0 +1,22 @@
+# Everforest Dark Hard (custom minimal palette)
+# Source palette adapted from upstream theme
+background = 2b3339
+foreground = d3c6aa
+cursor-color = d3c6aa
+selection-background = 374247
+palette = 2b3339
+palette = e67e80
+palette = a7c080
+palette = dbbc7f
+palette = 7fbbb3
+palette = d699b6
+palette = 83c092
+palette = d3c6aa
+palette = 4b565c
+palette = e67e80
+palette = a7c080
+palette = dbbc7f
+palette = 7fbbb3
+palette = d699b6
+palette = 83c092
+palette = d3c6aa

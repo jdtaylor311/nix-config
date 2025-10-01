@@ -1,0 +1,21 @@
+# TokyoNight Storm (custom minimal palette)
+background = 24283b
+foreground = c0caf5
+cursor-color = c0caf5
+selection-background = 353b52
+palette = 1d202f
+palette = f7768e
+palette = 9ece6a
+palette = e0af68
+palette = 7aa2f7
+palette = bb9af7
+palette = 7dcfff
+palette = a9b1d6
+palette = 414868
+palette = f7768e
+palette = 9ece6a
+palette = e0af68
+palette = 7aa2f7
+palette = bb9af7
+palette = 7dcfff
+palette = c0caf5

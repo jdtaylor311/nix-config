@@ -25,8 +25,17 @@ cursor-style = bar
 # Transparency (comment out if unsupported in your build)
 # background-opacity = 0.92
 
-# Theme (must exist in your Ghostty distribution; if not, comment out)
-theme = Catppuccin Mocha
+# THEME SELECTION ---------------------------------------------------
+# Option 1: Use a built-in theme name (uncomment ONE line below)
+# theme = Catppuccin Mocha
+# theme = Tokyo Night
+# theme = Dracula
+
+# Option 2: Use our custom palette files (preferred for consistency)
+# We load one by default via config-file include at the end.
+# To switch themes quickly: comment out the current config-file line and
+# uncomment another. Then reload config (cmd+shift+, if default) or restart.
+
 
 # Padding (comment if unsupported)
 # window-padding-x = 6
@@ -95,3 +104,8 @@ keybind = cmd+j=goto_split:down
 ############################################
 # End of config
 ############################################
+
+# Load selected theme palette (last one wins). Only keep ONE uncommented.
+config-file = themes/catppuccin-mocha
+# config-file = themes/everforest-dark
+# config-file = themes/tokyonight-storm
