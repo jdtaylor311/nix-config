@@ -1,4 +1,4 @@
-{pkgs}:
+{ pkgs }:
 with pkgs; [
   # Shell
   bashInteractive
@@ -34,7 +34,6 @@ with pkgs; [
 
   # Dev tooling
   git
-  neovim
   python3
   nodejs
   fnm

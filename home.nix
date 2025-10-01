@@ -45,4 +45,8 @@ in {
 
   # Map bash files and directories
   home.file.".bashrc.d".source = ./home/bash/.bashrc.d;
+
+  imports = [
+    ./modules/neovim.nix
+  ];
 }
