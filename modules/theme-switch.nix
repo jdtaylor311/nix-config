@@ -64,7 +64,7 @@ in {
                   everforest-dark) target="themes/everforest-dark" ;;
                   tokyonight-storm) target="themes/tokyonight-storm" ;;
                   catppuccin-mocha) target="themes/catppuccin-mocha" ;;
-                  everforest-light) target="themes/everforest-light" ;;
+                  catppuccin-latte) target="themes/catppuccin-latte" ;;
                   *) target="themes/everforest-dark" ;;
                 esac
                 ln -sf "$ghostty_dir/$target" "$ghostty_dir/current-theme"
@@ -81,18 +81,12 @@ in {
         pcall(vim.cmd.colorscheme, 'everforest')
         EOF
                     ;;
-                  everforest-light)
+                  catppuccin-latte)
                     cat > "$nvim_theme_file" <<'EOF'
-        vim.g.everforest_background = 'soft'
-        vim.g.everforest_enable_italic = 0
-        vim.g.everforest_better_performance = 1
-        vim.g.everforest_transparent_background = 0
-        pcall(vim.cmd.colorscheme, 'everforest')
-        -- Adjust Normal highlight if transparency globally desired
-        if vim.g.neovim_transparent then
-          vim.api.nvim_set_hl(0, 'Normal', { bg = 'NONE' })
-          vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'NONE' })
-        end
+        pcall(function()
+          require('catppuccin').setup({ flavour = 'latte', transparent_background = false })
+        end)
+        pcall(vim.cmd.colorscheme, 'catppuccin-latte')
         EOF
                     ;;
                   tokyonight-storm)
