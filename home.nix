@@ -46,6 +46,12 @@ in {
   # Map bash files and directories
   home.file.".bashrc.d".source = ./home/bash/.bashrc.d;
 
+  # Ghostty terminal configuration -> ~/.config/ghostty
+  xdg.configFile."ghostty" = {
+    source = ./home/ghostty;
+    recursive = true;
+  };
+
   imports = [
     ./modules/neovim.nix
   ];
