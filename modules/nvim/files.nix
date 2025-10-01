@@ -7,13 +7,15 @@
       pcall(telescope.load_extension, 'fzf')
       pcall(telescope.load_extension, 'ui-select')
       local tb = require('telescope.builtin')
-      vim.keymap.set('n', '<leader>sh', tb.help_tags, { desc = '[S]earch [H]elp' })
-      vim.keymap.set('n', '<leader>sf', tb.find_files, { desc = '[S]earch [F]iles' })
-      vim.keymap.set('n', '<leader>sg', tb.live_grep, { desc = '[S]earch by [G]rep' })
-      vim.keymap.set('n', '<leader>sb', tb.buffers, { desc = '[S]earch [B]uffers' })
-      vim.keymap.set('n', '<leader>sd', tb.diagnostics, { desc = '[S]earch [D]iagnostics' })
-      vim.keymap.set('n', '\\', ':Neotree reveal<CR>', { silent = true, desc = 'Neo-tree reveal' })
-      require('neo-tree').setup({ filesystem = { window = { mappings = { ['\\'] = 'close_window' } } } })
+  -- Consolidate search under <leader>f prefix to avoid raw <Space> collisions in which-key reports
+  vim.keymap.set('n', '<leader>fh', tb.help_tags, { desc = 'Find Help' })
+  vim.keymap.set('n', '<leader>ff', tb.find_files, { desc = 'Find Files' })
+  vim.keymap.set('n', '<leader>fg', tb.live_grep, { desc = 'Live Grep' })
+  vim.keymap.set('n', '<leader>fb', tb.buffers, { desc = 'Buffers' })
+  vim.keymap.set('n', '<leader>fd', tb.diagnostics, { desc = 'Diagnostics' })
+  -- Move Neo-tree to <leader>e to avoid bare backslash overlap
+  vim.keymap.set('n', '<leader>e', ':Neotree reveal<CR>', { silent = true, desc = 'Neo-tree reveal' })
+  require('neo-tree').setup({ filesystem = { window = { mappings = { ['e'] = 'close_window' } } } })
     '';
   };
 }

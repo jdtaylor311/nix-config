@@ -5,7 +5,7 @@
       require('nvim-autopairs').setup({})
       require('ibl').setup({})
       require('mini.ai').setup({ n_lines = 500 })
-      require('mini.surround').setup()
+  require('mini.surround').setup({ mappings = { add = 'sa', delete = 'sd', find = 'sf', find_left = 'sF', highlight = 'sh', replace = 'sr', update_n_lines = 'sn' } })
       local statusline = require('mini.statusline')
       statusline.setup({ use_icons = vim.g.have_nerd_font })
       statusline.section_location = function() return '%2l:%-2v' end
@@ -29,7 +29,8 @@
           markdown = { 'prettierd' },
         },
       })
-      vim.keymap.set('n', '<leader>f', function() require('conform').format({ async = true, lsp_format = 'fallback' }) end, { desc = 'Format buffer' })
+  -- Use <leader>lf for format (namespaced under LSP group) to avoid broad <leader>f collisions
+  vim.keymap.set('n', '<leader>lf', function() require('conform').format({ async = true, lsp_format = 'fallback' }) end, { desc = 'Format buffer' })
       local lint = require('lint')
       lint.linters_by_ft = { markdown = { 'markdownlint' } }
       local lint_grp = vim.api.nvim_create_augroup('nix-pure-lint', { clear = true })

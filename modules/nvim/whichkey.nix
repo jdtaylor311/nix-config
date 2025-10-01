@@ -57,7 +57,7 @@
         { '<leader>fb', tb('buffers'), desc = 'Buffers' },
         { '<leader>fh', tb('help_tags'), desc = 'Help' },
         { '<leader>fn', function() vim.cmd.enew() end, desc = 'New File' },
-        { '<leader>fs', function() vim.cmd.write() end, desc = 'Save File' },
+  { '<leader>fs', function() vim.cmd.write() end, desc = 'Save File' },
         { '<leader>fS', function() vim.cmd('%write') end, desc = 'Save All' },
         { '<leader>fq', function() vim.cmd.quit() end, desc = 'Quit' },
         { '<leader>fQ', function() vim.cmd('qa') end, desc = 'Quit All' },
@@ -117,7 +117,7 @@
         { '<leader>lR', function() vim.lsp.buf.references() end, desc = 'LSP References' },
         { '<leader>lh', function() vim.lsp.buf.hover() end, desc = 'LSP Hover' },
         { '<leader>ls', function() vim.lsp.buf.signature_help() end, desc = 'LSP Signature' },
-        { '<leader>lf', function() vim.lsp.buf.format({ async = true }) end, desc = 'LSP Format' },
+  { '<leader>lf', function() vim.lsp.buf.format({ async = true }) end, desc = 'LSP Format' },
 
         -- DAP extras
         { '<leader>de', function() require('dapui').eval() end, desc = 'DAP Eval' },
