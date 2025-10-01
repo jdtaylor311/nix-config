@@ -1,6 +1,6 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   programs.neovim = {
-    plugins = with pkgs.vimPlugins; [ nvim-cmp cmp-nvim-lsp cmp-path cmp-buffer luasnip friendly-snippets ];
+    plugins = with pkgs.vimPlugins; [nvim-cmp cmp-nvim-lsp cmp-path cmp-buffer luasnip friendly-snippets];
     extraLuaConfig = ''
       local cmp = require('cmp')
       local luasnip = require('luasnip')

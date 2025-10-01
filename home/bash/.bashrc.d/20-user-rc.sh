@@ -13,4 +13,3 @@ fi
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 eval "$(fnm env --use-on-cd --shell bash)"
-

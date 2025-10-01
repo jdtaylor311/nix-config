@@ -1,9 +1,13 @@
-{ pkgs, config, lib, ... }:
-let
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: let
   trans = config.myThemes.neovimTransparent or true;
 in {
   programs.neovim = {
-    plugins = with pkgs.vimPlugins; [ lualine-nvim nvim-web-devicons ];
+    plugins = with pkgs.vimPlugins; [lualine-nvim nvim-web-devicons];
     extraLuaConfig = ''
       -- Dynamic statusline (lualine) with theme awareness & optional transparency
       local ok, lualine = pcall(require, 'lualine')
@@ -32,7 +36,11 @@ in {
 
         local base = pick_base_theme()
         local theme_tbl = nil
-        if ${if trans then "true" else "false"} then
+        if ${
+        if trans
+        then "true"
+        else "false"
+      } then
           theme_tbl = make_transparent(base)
         end
         if not theme_tbl then

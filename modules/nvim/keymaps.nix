@@ -1,4 +1,4 @@
-{ ... }: {
+{...}: {
   programs.neovim.extraLuaConfig = ''
     -- Basic window & UX keymaps
     local map = vim.keymap.set

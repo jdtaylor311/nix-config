@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   programs.neovim.extraLuaConfig = ''
     -- Core options extracted
     vim.g.mapleader = ' '

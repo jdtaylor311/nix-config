@@ -1,10 +1,14 @@
-{ pkgs, lib, config, ... }:
-let
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: let
   inherit (pkgs.vimPlugins) everforest tokyonight-nvim catppuccin-nvim;
   cfg = config.myThemes;
 in {
   programs.neovim = {
-    plugins = [ everforest tokyonight-nvim catppuccin-nvim ];
+    plugins = [everforest tokyonight-nvim catppuccin-nvim];
     extraLuaConfig = ''
       -- Base theme fallback (Everforest hard dark) with optional transparency
       vim.g.everforest_background = 'hard'
