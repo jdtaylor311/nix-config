@@ -20,10 +20,10 @@ font-family = MonoLisa Nerd Font
 font-size = 13
 
 # Valid cursor-style values per error message: bar, block, underline, block_hollow
-cursor-style = bar
+cursor-style = beam
 
 # Transparency (comment out if unsupported in your build)
-# background-opacity = 0.92
+ background-opacity = 0.92
 
 # THEME SELECTION ---------------------------------------------------
 # Option 1: Use a built-in theme name (uncomment ONE line below)
@@ -106,6 +106,6 @@ keybind = cmd+j=goto_split:down
 ############################################
 
 # Load selected theme palette (last one wins). Only keep ONE uncommented.
-config-file = themes/catppuccin-mocha
-# config-file = themes/everforest-dark
+# config-file = themes/catppuccin-mocha
+config-file = themes/everforest-dark
 # config-file = themes/tokyonight-storm
