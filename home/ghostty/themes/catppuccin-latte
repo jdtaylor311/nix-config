@@ -1,28 +1,28 @@
 # Catppuccin Latte - soft light variant
 # Reference: https://github.com/catppuccin/catppuccin
 # Tuned for moderate contrast (not stark white) and daytime readability.
-background = eff1f5
-foreground = 4c4f69
-cursor-color = dc8a78
-selection-background = dce0e8
+background = e6e9ee       # slightly darker than eff1f5
+foreground = 45485f       # deepen foreground a touch for contrast on darker bg
+cursor-color = d98670      # warm cursor slightly toned
+selection-background = d1d6dd  # follow background shift
 
 # Base 16 (Latte palette approximations)
-palette = 5c5f77
-palette = d20f39
-palette = 40a02b
-palette = df8e1d
-palette = 1e66f5
-palette = ea76cb
-palette = 179299
-palette = acb0be
-palette = 6c6f85
-palette = d20f39
-palette = 40a02b
-palette = df8e1d
-palette = 1e66f5
-palette = ea76cb
-palette = 179299
-palette = b0b3bf
+palette = 0=55586e
+palette = 1=d20f39
+palette = 2=40a02b
+palette = 3=df8e1d
+palette = 4=1e66f5
+palette = 5=ea76cb
+palette = 6=179299
+palette = 7=a3a8b5
+palette = 8=64687d
+palette = 9=d20f39
+palette = 10=40a02b
+palette = 11=df8e1d
+palette = 12=1e66f5
+palette = 13=ea76cb
+palette = 14=179299
+palette = 15=a7abb7
 
 # Split divider uses a neutral mid accent
 split-divider-color = 1e66f5

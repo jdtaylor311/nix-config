@@ -18,7 +18,7 @@ in {
       enable = lib.mkEnableOption "Enable time-based theme switching" // {default = true;};
       dayTheme = lib.mkOption {
         type = lib.types.str;
-        default = "catppuccin-mocha";
+        default = "catppuccin-latte";
         description = "Theme label used during day hours.";
       };
       nightTheme = lib.mkOption {
