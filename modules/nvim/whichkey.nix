@@ -47,6 +47,8 @@
         { '<leader>l', group = '+lsp' },
         { '<leader>d', group = '+debug' },
         { '<leader>t', group = '+toggle' },
+        { '<leader>p', group = '+project' },
+        { '<leader>T', group = '+theme' },
 
         -- File group
         { '<leader>ff', tb('find_files'), desc = 'Find Files' },
@@ -86,6 +88,42 @@
             end
           end, desc = 'ColorColumn 80' },
         { '<leader>td', toggle_diagnostics, desc = 'Diagnostics virtual text' },
+
+        -- Theme group (cycle / specific)
+        { '<leader>Tc', function()
+            local list = { 'everforest-dark', 'tokyonight-storm', 'catppuccin-mocha' }
+            local current = vim.g.colors_name
+            local idx = 1
+            for i, name in ipairs(list) do if current == name then idx = i break end end
+            local nextName = list[(idx % #list) + 1]
+            pcall(vim.cmd.colorscheme, nextName)
+            vim.notify('Theme -> ' .. nextName)
+          end, desc = 'Cycle Theme' },
+        { '<leader>Te', function() pcall(vim.cmd.colorscheme, 'everforest') end, desc = 'Everforest' },
+        { '<leader>Tt', function() pcall(vim.cmd.colorscheme, 'tokyonight-storm') end, desc = 'TokyoNight Storm' },
+        { '<leader>Tm', function() pcall(vim.cmd.colorscheme, 'catppuccin-mocha') end, desc = 'Catppuccin Mocha' },
+
+        -- Project/session placeholder (can hook into future persistence plugin)
+        { '<leader>ps', function() vim.notify('Session save (placeholder)') end, desc = 'Save Session' },
+        { '<leader>pl', function() vim.notify('Session load (placeholder)') end, desc = 'Load Session' },
+
+        -- LSP explicit exposures (mirroring on_attach so which-key shows them immediately)
+        { '<leader>ln', function() vim.lsp.buf.rename() end, desc = 'LSP Rename' },
+        { '<leader>la', function() vim.lsp.buf.code_action() end, desc = 'LSP Code Action' },
+        { '<leader>ld', function() vim.lsp.buf.definition() end, desc = 'LSP Definition' },
+        { '<leader>lD', function() vim.lsp.buf.declaration() end, desc = 'LSP Declaration' },
+        { '<leader>li', function() vim.lsp.buf.implementation() end, desc = 'LSP Implementation' },
+        { '<leader>lt', function() vim.lsp.buf.type_definition() end, desc = 'LSP Type Definition' },
+        { '<leader>lR', function() vim.lsp.buf.references() end, desc = 'LSP References' },
+        { '<leader>lh', function() vim.lsp.buf.hover() end, desc = 'LSP Hover' },
+        { '<leader>ls', function() vim.lsp.buf.signature_help() end, desc = 'LSP Signature' },
+        { '<leader>lf', function() vim.lsp.buf.format({ async = true }) end, desc = 'LSP Format' },
+
+        -- DAP extras
+        { '<leader>de', function() require('dapui').eval() end, desc = 'DAP Eval' },
+        { '<leader>dr', function() require('dap').repl.toggle() end, desc = 'DAP REPL' },
+        { '<leader>dx', function() require('dap').terminate() end, desc = 'DAP Terminate' },
+        { '<leader>dl', function() require('dap').run_last() end, desc = 'DAP Run Last' },
       })
     '';
   };
