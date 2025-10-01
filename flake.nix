@@ -20,14 +20,14 @@
   in {
     homeConfigurations = {
       "jdtaylor311-darwin" = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs { system = "aarch64-darwin"; };
+        pkgs = import nixpkgs {system = "aarch64-darwin";};
         modules = [
           ./home.nix
           ./modules/neovim.nix
         ];
       };
       "jdtaylor311-linux" = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs { system = "aarch64-darwin"; };
+        pkgs = import nixpkgs {system = "aarch64-darwin";};
         modules = [
           ./home.nix
           ./modules/neovim.nix
