@@ -18,7 +18,7 @@ in {
       enable = lib.mkEnableOption "Enable time-based theme switching" // {default = true;};
       dayTheme = lib.mkOption {
         type = lib.types.str;
-        default = "everforest-dark";
+        default = "catppuccin-mocha";
         description = "Theme label used during day hours.";
       };
       nightTheme = lib.mkOption {
@@ -64,6 +64,7 @@ in {
                   everforest-dark) target="themes/everforest-dark" ;;
                   tokyonight-storm) target="themes/tokyonight-storm" ;;
                   catppuccin-mocha) target="themes/catppuccin-mocha" ;;
+                  everforest-light) target="themes/everforest-light" ;;
                   *) target="themes/everforest-dark" ;;
                 esac
                 ln -sf "$ghostty_dir/$target" "$ghostty_dir/current-theme"
@@ -78,6 +79,20 @@ in {
         vim.g.everforest_background = 'hard'
         vim.g.everforest_transparent_background = 1
         pcall(vim.cmd.colorscheme, 'everforest')
+        EOF
+                    ;;
+                  everforest-light)
+                    cat > "$nvim_theme_file" <<'EOF'
+        vim.g.everforest_background = 'soft'
+        vim.g.everforest_enable_italic = 0
+        vim.g.everforest_better_performance = 1
+        vim.g.everforest_transparent_background = 0
+        pcall(vim.cmd.colorscheme, 'everforest')
+        -- Adjust Normal highlight if transparency globally desired
+        if vim.g.neovim_transparent then
+          vim.api.nvim_set_hl(0, 'Normal', { bg = 'NONE' })
+          vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'NONE' })
+        end
         EOF
                     ;;
                   tokyonight-storm)

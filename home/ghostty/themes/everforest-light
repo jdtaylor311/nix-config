@@ -1,0 +1,28 @@
+# Everforest Light (soft) - gentle daylight theme
+# Goal: readable in bright ambient light without being harsh.
+# Palette adapted from Everforest light soft variant.
+background = f4f0e5
+foreground = 5c6a72
+cursor-color = 5c6a72
+selection-background = e0d9cf
+
+# 16-color base (approximate, keeping contrast moderate)
+palette = f4f0e5
+palette = f85552
+palette = 8da101
+palette = df8e1d
+palette = 3a94c5
+palette = df69ba
+palette = 35a77c
+palette = 5c6a72
+palette = a39a90
+palette = f85552
+palette = 8da101
+palette = df8e1d
+palette = 3a94c5
+palette = df69ba
+palette = 35a77c
+palette = 4f585e
+
+# Split divider accent (subtle blue)
+split-divider-color = 3a94c5
