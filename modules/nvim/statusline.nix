@@ -9,7 +9,7 @@ in {
       local ok, lualine = pcall(require, 'lualine')
       if ok then
         local function pick_base_theme()
-          local cs = (vim.g.colors_name or '')
+          local cs = (vim.g.colors_name or "")
           if cs:match('everforest') then return 'everforest' end
           if cs:match('tokyonight') then return 'tokyonight' end
           if cs:match('catppuccin') then return 'catppuccin' end
@@ -32,7 +32,7 @@ in {
 
         local base = pick_base_theme()
         local theme_tbl = nil
-        if trans then
+        if ${if trans then "true" else "false"} then
           theme_tbl = make_transparent(base)
         end
         if not theme_tbl then
@@ -46,8 +46,8 @@ in {
           lualine.setup({
             options = {
               theme = theme_tbl,
-              section_separators = '',
-              component_separators = '',
+              section_separators = "",
+              component_separators = "",
               globalstatus = true,
               disabled_filetypes = { 'neo-tree', 'starter' },
             },
