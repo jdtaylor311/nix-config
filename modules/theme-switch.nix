@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 let
   cfg = config.myThemes;
+  isDarwin = pkgs.stdenv.isDarwin;
 in {
   options.myThemes = {
     enable = lib.mkEnableOption "Enable custom theming integration" // { default = true; };
@@ -81,7 +82,16 @@ EOF
   in {
     home.packages = [ script ];
 
-    systemd.user = lib.mkIf cfg.autoSwitch.enable {
+    # Initial run at activation so user gets the correct theme immediately.
+    home.activation.syncThemeInitial = lib.mkIf cfg.autoSwitch.enable (
+      lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        echo "[sync-theme] running initial theme sync" >&2
+        "${script}/bin/sync-theme" || true
+      ''
+    );
+
+    # Linux/systemd variant
+    systemd.user = lib.mkIf (cfg.autoSwitch.enable && !isDarwin) {
       services.sync-theme = {
         Unit.Description = "Sync terminal + neovim theme";
         Service = {
@@ -97,6 +107,19 @@ EOF
           Persistent = true;
         };
         Install.WantedBy = [ "timers.target" ];
+      };
+    };
+
+    # macOS / launchd variant
+    launchd.agents.sync-theme = lib.mkIf (cfg.autoSwitch.enable && isDarwin) {
+      enable = true;
+      config = {
+        Label = "com.user.sync-theme";
+        ProgramArguments = [ "${script}/bin/sync-theme" ];
+        StartInterval = 1800; # 30 minutes
+        RunAtLoad = true;
+        StandardOutPath = "${config.home.homeDirectory}/Library/Logs/sync-theme.log";
+        StandardErrorPath = "${config.home.homeDirectory}/Library/Logs/sync-theme.err.log";
       };
     };
   });
