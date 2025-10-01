@@ -5,7 +5,18 @@
       require('nvim-autopairs').setup({})
       require('ibl').setup({})
       require('mini.ai').setup({ n_lines = 500 })
-  require('mini.surround').setup({ mappings = { add = 'sa', delete = 'sd', find = 'sf', find_left = 'sF', highlight = 'sh', replace = 'sr', update_n_lines = 'sn' } })
+      -- Use a less collision-prone prefix for surround operations (gs*) to avoid which-key overlap noise
+      require('mini.surround').setup({
+        mappings = {
+          add = 'gsa',
+          delete = 'gsd',
+          find = 'gsf',
+          find_left = 'gsF',
+          highlight = 'gsh',
+          replace = 'gsr',
+          update_n_lines = 'gsn',
+        },
+      })
       local statusline = require('mini.statusline')
       statusline.setup({ use_icons = vim.g.have_nerd_font })
       statusline.section_location = function() return '%2l:%-2v' end
