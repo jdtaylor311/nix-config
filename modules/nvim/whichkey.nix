@@ -69,6 +69,7 @@
             { '<leader>fS', function() vim.cmd('%write') end, desc = 'Save All' },
             { '<leader>fq', function() vim.cmd.quit() end, desc = 'Quit' },
             { '<leader>fQ', function() vim.cmd('qa') end, desc = 'Quit All' },
+      { '<leader>fA', '<cmd>FormatProject<CR>', desc = 'Format Project' },
       { '<leader>qq', function() vim.cmd('qa!') end, desc = 'Force Quit All' },
 
             -- Git group
