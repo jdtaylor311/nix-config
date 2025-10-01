@@ -19,11 +19,10 @@ in {
         local stat = (vim.uv or vim.loop).fs_stat(dyn)
         if stat then pcall(dofile, dyn) end
       end
-    '';
-  };
-}
 
-      -- Additional highlight tweaks to better mirror Ghostty minimal palette
+      -- (Optional) Additional highlight tweaks previously appended
+      -- Uncomment block below if you want Catppuccin-like accent overlay
+      --[[
       local set_hl = vim.api.nvim_set_hl
       set_hl(0, 'Normal', { bg = '#1e1e2e', fg = '#cdd6f4' })
       set_hl(0, 'NormalFloat', { bg = '#1e1e2e', fg = '#cdd6f4' })
@@ -44,6 +43,7 @@ in {
       set_hl(0, 'DiagnosticWarn', { fg = '#f9e2af' })
       set_hl(0, 'DiagnosticInfo', { fg = '#89b4fa' })
       set_hl(0, 'DiagnosticHint', { fg = '#94e2d5' })
+      ]]
     '';
   };
 }
