@@ -66,6 +66,9 @@ in {
       cmp-buffer
       luasnip
       friendly-snippets
+      # GitHub Copilot integration
+      copilot-lua
+      copilot-cmp
       # Theme
       tokyonight-nvim
       # Optional helpers
@@ -161,6 +164,21 @@ in {
       })
 
       ------------------------------------------------------------------
+      -- GitHub Copilot (copilot.lua + copilot-cmp)
+      ------------------------------------------------------------------
+      require('copilot').setup({
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+        filetypes = {
+          markdown = true,
+          help = true,
+          gitcommit = true,
+          ["*"] = true,
+        },
+      })
+      require('copilot_cmp').setup()
+
+      ------------------------------------------------------------------
       -- Completion (nvim-cmp + luasnip)
       ------------------------------------------------------------------
       local cmp = require('cmp')
@@ -182,7 +200,12 @@ in {
             else fallback() end
           end, { 'i', 's' }),
         }),
-        sources = cmp.config.sources({ { name = 'nvim_lsp' }, { name = 'path' }, { name = 'buffer' } }),
+        sources = cmp.config.sources({
+          { name = 'copilot' },
+          { name = 'nvim_lsp' },
+          { name = 'path' },
+          { name = 'buffer' },
+        }),
       })
 
       ------------------------------------------------------------------
