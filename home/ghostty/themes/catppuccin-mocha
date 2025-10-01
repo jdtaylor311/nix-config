@@ -22,3 +22,6 @@ palette = 89b4fa
 palette = f5c2e7
 palette = 94e2d5
 palette = a6adc8
+
+# Accent-colored split divider for clearer pane separation
+split-divider-color = 89b4fa

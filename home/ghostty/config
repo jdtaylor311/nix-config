@@ -41,6 +41,11 @@ cursor-style = block_hollow
 # window-padding-x = 6
 # window-padding-y = 4
 
+# Split divider styling (color applied per theme file now). If you want a single
+# universal divider color regardless of theme, uncomment below. Theme value wins
+# if both are set after load.
+# split-divider-color = ffcc00
+
 ############################################
 # Quality of Life Keybinds (REMOVED unsupported actions to stop errors)
 ############################################

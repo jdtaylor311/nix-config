@@ -19,3 +19,6 @@ palette = 7aa2f7
 palette = bb9af7
 palette = 7dcfff
 palette = c0caf5
+
+# Accent-colored split divider for clearer pane separation
+split-divider-color = 7aa2f7
