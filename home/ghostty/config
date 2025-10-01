@@ -105,7 +105,12 @@ keybind = cmd+j=goto_split:down
 # End of config
 ############################################
 
-# Load selected theme palette (last one wins). Only keep ONE uncommented.
+# Theme include mechanism (managed by sync-theme script):
+# Primary dynamic symlink:
+config-file = ?current-theme
+
+# Manual fallbacks (uncomment ONE if not using auto switch):
+# config-file = themes/everforest-dark
 # config-file = themes/catppuccin-mocha
-config-file = themes/everforest-dark
 # config-file = themes/tokyonight-storm
+

@@ -54,5 +54,6 @@ in {
 
   imports = [
     ./modules/neovim.nix
+    ./modules/theme-switch.nix
   ];
 }
