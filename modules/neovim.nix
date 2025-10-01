@@ -9,6 +9,7 @@
       ./nvim/completion.nix
   ./nvim/copilot.nix
   ./nvim/statusline.nix
+  ./nvim/whichkey.nix
       ./nvim/git.nix
       ./nvim/files.nix
       ./nvim/editing.nix
