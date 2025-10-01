@@ -1,5 +1,9 @@
-{ config, pkgs, lib, ... }:
-let
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
   inherit (pkgs) vimPlugins;
   # Pre-build treesitter grammars so no network access is needed at runtime.
   treesitter = pkgs.vimPlugins.nvim-treesitter.withPlugins (p: [
@@ -21,20 +25,25 @@ in {
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
-    withNodeJs = true;      # for some language servers / tools
-    withPython3 = true;     # python plugins / servers
+    withNodeJs = true; # for some language servers / tools
+    withPython3 = true; # python plugins / servers
 
     # Install language servers & formatters DECLARATIVELY instead of using mason (runtime downloader).
     # Add more as you need (e.g. bash-language-server, typescript-language-server, rust-analyzer, etc.)
     extraPackages = with pkgs; [
-      ripgrep fd git nodejs python3
+      ripgrep
+      fd
+      git
+      nodejs
+      python3
       lua-language-server
       nil # Nix LSP (nil_ls)
       stylua
       alejandra
       shfmt
       prettierd
-      black isort
+      black
+      isort
     ];
 
     # Pure Nix managed plugins (NO lazy.nvim / packer). All pinned by flake.lock via nixpkgs rev.
@@ -369,3 +378,4 @@ in {
   # Leaving it in place is harmless but unused.
   # (Do NOT set xdg.configFile."nvim" any more, that would override this inline config.)
 }
+
