@@ -1,6 +1,87 @@
 ############################################
 # Ghostty Configuration
-# Custom keybinds for split management
+# Fun & Friendly Edition
+#  - Enriched keybinds (command palette, search, tabs, font sizing)
+#  - Theming + subtle transparency + blur (macOS capable)
+#  - Comfortable font + cursor tweaks
+#  - Extra comments so Future You remembers why things exist
+#
+#  Notes:
+#   * If a keybind / option is unknown to your Ghostty version it will be ignored.
+#   * macOS-only niceties (blur) will silently no-op on Linux.
+#   * Adjust font-family to one you actually have installed (Nerd Font recommended).
+############################################
+
+############################################
+# UI / Visual Tweaks
+############################################
+font-family = JetBrainsMono Nerd Font
+font-size = 13
+cursor-style = beam
+cursor-blink = yes
+underline-style = curly
+
+# Subtle transparency (0–1). 0.92 keeps readability.
+background-opacity = 0.92
+# macOS (ignored elsewhere): nice frosted glass
+background-blur-radius = 20
+
+# Padding around the terminal content (pixels)
+window-padding-x = 6
+window-padding-y = 4
+
+# Prefer dark theme; change to a theme you like. Ghostty ships several.
+# Some popular builtin names: "Catppuccin Mocha", "Tokyo Night", "Dracula"
+theme = Catppuccin Mocha
+
+# Confirm closing only if multiple tabs/splits would be lost
+confirm-close = multiple-tabs
+
+# Draw minimal chrome while still keeping resizing handles (auto/dynamic)
+window-decoration = auto
+
+# Allow bold text to use bright colors
+bold-is-bright = yes
+
+# Truecolor (generally on by default; explicit for clarity)
+true-color = yes
+
+############################################
+# Quality of Life Keybinds
+############################################
+# Command palette & launcher
+keybind = cmd+shift+p=show_command_palette
+keybind = cmd+shift+o=show_launcher
+
+# Search inside scrollback
+keybind = cmd+f=search
+
+# Open / reload config quickly (useful while tweaking)
+keybind = cmd+shift+comma=open_config
+keybind = cmd+shift+r=reload_config
+
+# Font size adjustments (standard macOS style)
+keybind = cmd+minus=decrease_font_size
+keybind = cmd+shift+minus=decrease_font_size
+keybind = cmd+equal=increase_font_size
+keybind = cmd+shift+equal=increase_font_size
+keybind = cmd+0=reset_font_size
+
+# Tab management
+keybind = cmd+t=new_tab
+keybind = cmd+w=close_tab
+keybind = cmd+shift+left=previous_tab
+keybind = cmd+shift+right=next_tab
+
+# Broadcast input to all splits (toggle)
+keybind = cmd+shift+b=toggle_broadcast_input
+
+# Copy & paste conveniences (macOS muscle memory)
+keybind = cmd+c=copy_to_clipboard
+keybind = cmd+v=paste_from_clipboard
+
+############################################
+# Existing Split Management Keybinds
 ############################################
 
 # -----------------------------
@@ -45,6 +126,12 @@ keybind = cmd+l=goto_split:right
 keybind = cmd+h=goto_split:left
 keybind = cmd+k=goto_split:up
 keybind = cmd+j=goto_split:down
+
+############################################
+# Friendly Messages (purely comments – customize away!)
+############################################
+# Welcome! Tweak this file then press Cmd+Shift+R (reload_config) to apply.
+# Use Cmd+Shift+P for the command palette to discover more actions.
 
 ############################################
 # End of config
