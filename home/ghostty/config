@@ -16,7 +16,7 @@
 # UI / Visual Tweaks (conservative: only options known to work widely)
 ############################################
 # If any of these still error, comment them out; Ghostty feature set changes quickly.
-font-family = JetBrainsMono Nerd Font
+font-family = MonoLisa Nerd Font
 font-size = 13
 
 # Valid cursor-style values per error message: bar, block, underline, block_hollow
