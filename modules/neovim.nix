@@ -1,7 +1,5 @@
+{ pkgs, ... }:
 {
-  config,
-  { pkgs, lib, ... }:
-  {
     imports = [
       ./nvim/options.nix
       ./nvim/keymaps.nix
@@ -15,14 +13,18 @@
       ./nvim/dap.nix
     ];
 
-    programs.neovim = {
-      enable = true;
-      defaultEditor = true;
-      viAlias = true;
-      vimAlias = true;
-      withNodeJs = true;
-      withPython3 = true;
-      extraPackages = with pkgs; [ ripgrep fd git nodejs python3 stylua alejandra shfmt prettierd black isort ];
-    };
-  }
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
+    withNodeJs = true;
+    withPython3 = true;
+    extraPackages = with pkgs; [
+      ripgrep fd git nodejs python3
+      stylua alejandra shfmt prettierd black isort
+      lua-language-server nil
+    ];
+  };
+}
 
