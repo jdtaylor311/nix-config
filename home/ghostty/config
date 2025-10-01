@@ -20,7 +20,7 @@ font-family = MonoLisa Nerd Font
 font-size = 13
 
 # Valid cursor-style values per error message: bar, block, underline, block_hollow
-cursor-style = beam
+cursor-style = block_hollow
 
 # Transparency (comment out if unsupported in your build)
  background-opacity = 0.92
