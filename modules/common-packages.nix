@@ -1,4 +1,4 @@
-{ pkgs }:
+{pkgs}:
 with pkgs; [
   # Shell
   bashInteractive
@@ -38,4 +38,5 @@ with pkgs; [
   nodejs
   fnm
   rustup
+  markdownlint-cli
 ]
