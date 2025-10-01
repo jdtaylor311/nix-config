@@ -8,6 +8,7 @@
       ./nvim/lsp.nix
       ./nvim/completion.nix
   ./nvim/copilot.nix
+  ./nvim/statusline.nix
       ./nvim/git.nix
       ./nvim/files.nix
       ./nvim/editing.nix
