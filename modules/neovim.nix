@@ -7,6 +7,7 @@
       ./nvim/treesitter.nix
       ./nvim/lsp.nix
       ./nvim/completion.nix
+  ./nvim/copilot.nix
       ./nvim/git.nix
       ./nvim/files.nix
       ./nvim/editing.nix
