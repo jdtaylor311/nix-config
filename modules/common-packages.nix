@@ -39,4 +39,5 @@ with pkgs; [
   fnm
   rustup
   markdownlint-cli
+  gh
 ]

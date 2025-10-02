@@ -68,10 +68,33 @@ in {
         }
       end
 
+      local sidekick_component = function()
+        local ok, status_mod = pcall(require, 'sidekick.status')
+  if not ok then return "" end
+  local st = status_mod.get and status_mod.get()
+  if not st then return "" end
+        local icon = ''
+        if st.kind == 'Error' then return icon .. '!' end
+        if st.busy then return icon .. '*'
+        end
+        return icon
+      end
+
+      local copilot_component = function()
+        for _, client in ipairs(vim.lsp.get_active_clients()) do
+          if client.name == 'copilot' then return ' AI' end
+        end
+        return ""
+      end
+
       local sections = {
         lualine_a = { 'mode' },
         lualine_b = { 'branch', { 'diff', symbols = { added = '+', modified = '~', removed = '-' } } },
-        lualine_c = { { 'filename', path = 1, newfile_status = true, symbols = { modified = '', readonly = '' } } },
+        lualine_c = {
+          { 'filename', path = 1, newfile_status = true, symbols = { modified = '', readonly = '' } },
+          { sidekick_component, cond = function() return sidekick_component() ~= "" end },
+          { copilot_component, cond = function() return copilot_component() ~= "" end },
+        },
         lualine_x = { { 'diagnostics', sources = { 'nvim_diagnostic' }, sections = { 'error','warn','info','hint' }, symbols = { error=' ', warn=' ', info=' ', hint=' ' } }, 'encoding', 'fileformat', 'filetype' },
         lualine_y = { 'progress' },
         lualine_z = { 'location' },

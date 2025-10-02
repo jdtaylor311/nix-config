@@ -24,11 +24,29 @@
     ##########################################################################
     homeConfigurations = {
       "jdtaylor311-darwin" = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {system = "aarch64-darwin";};
+        pkgs = import nixpkgs {
+          system = "aarch64-darwin";
+          config = {
+            allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) [
+              "github-copilot-cli"
+              "copilot-language-server"
+              "copilot-npm-bundle"
+            ];
+          };
+        };
         modules = [./home.nix ./modules/neovim.nix];
       };
       "jdtaylor311-linux" = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {system = "x86_64-linux";};
+        pkgs = import nixpkgs {
+          system = "x86_64-linux";
+          config = {
+            allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) [
+              "github-copilot-cli"
+              "copilot-language-server"
+              "copilot-npm-bundle"
+            ];
+          };
+        };
         modules = [./home.nix ./modules/neovim.nix];
       };
     };

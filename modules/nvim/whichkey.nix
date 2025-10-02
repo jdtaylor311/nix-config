@@ -41,12 +41,22 @@
 
           -- New spec: use wk.add with explicit mappings and group declarations
           wk.add({
+            -- Inline NES Tab mapping (insert + normal) if sidekick present
+            { '<Tab>', function()
+                local ok, sk = pcall(require, 'sidekick')
+                if ok and sk.nes_jump_or_apply and sk.nes_jump_or_apply() then
+                  return ""
+                end
+                -- fallback: in insert mode keep Tab behavior
+                return vim.api.nvim_get_mode().mode:match('i') and '\t' or ""
+              end, mode = { 'i', 'n' }, expr = true, desc = 'Next Edit Suggestion' },
             -- Group declarations
             { '<leader>f', group = '+file' },
             { '<leader>g', group = '+git' },
             { '<leader>l', group = '+lsp' },
             { '<leader>d', group = '+debug' },
             { '<leader>t', group = '+toggle' },
+    { '<leader>a', group = '+ai' },
       { '<leader>p', group = '+project' },
       { '<leader>T', group = '+theme' },
       { '<leader>q', group = '+quit' },
@@ -134,6 +144,43 @@
             { '<leader>dr', function() require('dap').repl.toggle() end, desc = 'DAP REPL' },
             { '<leader>dx', function() require('dap').terminate() end, desc = 'DAP Terminate' },
             { '<leader>dl', function() require('dap').run_last() end, desc = 'DAP Run Last' },
+
+            -- AI / Sidekick (CLI + prompts)
+            { '<leader>aa', function() -- toggle/focus last tool
+                local ok, cli = pcall(require, 'sidekick.cli')
+                if ok then cli.toggle({ focus = true }) end
+              end,
+              desc = 'Sidekick Toggle CLI' },
+            { '<leader>as', function() -- select a tool (installed or all)
+                local ok, cli = pcall(require, 'sidekick.cli')
+                if ok then cli.select() end
+              end,
+              desc = 'Sidekick Select CLI' },
+            { '<leader>ap', function() -- select a prompt from library
+                local ok, cli = pcall(require, 'sidekick.cli')
+                if ok and cli.select_prompt then cli.select_prompt() elseif ok and cli.prompt then cli.prompt() end
+              end,
+              desc = 'Sidekick Prompt Picker' },
+            { '<leader>ar', function() -- send review preset
+                local ok, cli = pcall(require, 'sidekick.cli')
+                if ok and cli.ask then cli.ask({ prompt = 'review', submit = true }) end
+              end,
+              desc = 'Sidekick Review Prompt' },
+            { '<leader>ac', function() -- open Copilot CLI directly
+                local ok, cli = pcall(require, 'sidekick.cli')
+                if ok and cli.toggle then cli.toggle({ name = 'copilot', focus = true }) end
+              end,
+              desc = 'Sidekick Copilot CLI' },
+            { '<leader>ax', function() -- ad-hoc freeform ask
+                local ok, cli = pcall(require, 'sidekick.cli')
+                if not ok or not cli.ask then return end
+                vim.ui.input({ prompt = 'Sidekick ask: ' }, function(input)
+                  if input and input ~= "" then
+                    cli.ask({ msg = input, submit = true })
+                  end
+                end)
+              end,
+              desc = 'Sidekick Ask (Freeform)' },
           })
     '';
   };

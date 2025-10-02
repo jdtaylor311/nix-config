@@ -13,6 +13,7 @@
     ./nvim/files.nix
     ./nvim/editing.nix
     ./nvim/dap.nix
+    ./nvim/sidekick.nix
   ];
 
   programs.neovim = {
@@ -36,6 +37,7 @@
       isort
       lua-language-server
       nil
+      gh
     ];
   };
 }
